@@ -8,14 +8,7 @@ public interface Attendee {
 	 * Use these values to instantiate corresponding fields.
 	 * @return
 	 */
-	public class Student implements Attendee {
-		private String first;
-		private String last;
-		public Student (String firstName, String lastName) {
-			this.first = firstName;
-			this.last = lastName;
-		}
-	}
+
 	//returns true if the student has been marked present, false otherwise
 	boolean isPresent();
 
