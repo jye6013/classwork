@@ -35,29 +35,26 @@ public class Student implements Attendee {
 		return last.toLowerCase().equals(last.toLowerCase());
 	}
 	
+	public String addSpace(String x, int length) {
+		if (x.length() < length) {
+			x += "";
+		}
+		return x;
+	}
+	
 	public String getReportString() {
-		String name;
-		String spaces;
-		if (last.length() > 20) {
-			
-			for (int i = 0; i < last.length(); i++) {
-				if (i < last.length() -3) {
-					
-				}
-			}
-		}
-		if (first.length() > 20) {
-			
-			for (int i = (first.length()) -3; i < first.length(); i++) {
-				//first.substring(i-1, i) = " ";
-			}
-		}	
+		String studentStatus = last;
+		studentStatus = addSpace(studentStatus, 20);
+		studentStatus += first;
+		studentStatus = addSpace(studentStatus, 40);
 		
-		for (int i = 1; i <20; i++)	{
-			//spaces.substring(i-1, i) = " ";
+		if (present == true) {
+			studentStatus += "PRESENT";
 		}
-		//name += last + spaces + first;
-		//name.substring(40, endIndex)
+		else {
+			studentStatus += "ABSENT";
+		}
 		
+		return studentStatus;
 	}
 }
