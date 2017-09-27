@@ -49,14 +49,14 @@ public class Student implements Attendee {
 		if (first.length() > 20) {
 			
 			for (int i = (first.length()) -3; i < first.length(); i++) {
-				first.substring(i-1, i) = " ";
+				//first.substring(i-1, i) = " ";
 			}
 		}	
 		
 		for (int i = 1; i <20; i++)	{
-			spaces.substring(i-1, i) = " ";
+			//spaces.substring(i-1, i) = " ";
 		}
-		name += last + spaces + first;
+		//name += last + spaces + first;
 		//name.substring(40, endIndex)
 		
 	}
