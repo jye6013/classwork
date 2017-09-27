@@ -20,28 +20,44 @@ public class Student implements Attendee {
 	}
 	
 	public String getFirstName() {
-		return firstName;
+		return first;
 	}
 	
 	public String getLastName() {
-		return lastName;
+		return last;
 	}
 	
 	public boolean matches(String first, String last) {
-		return first.toLowerCase().equals(firstName.toLowerCase()) && last.toLowerCase().equals(lastName.toLowerCase());
+		return first.toLowerCase().equals(first.toLowerCase()) && last.toLowerCase().equals(last.toLowerCase());
 	}
 	
 	public boolean matches(String last) {
-		return last.toLowerCase().equals(lastName.toLowerCase());
+		return last.toLowerCase().equals(last.toLowerCase());
 	}
 	
 	public String getReportString() {
-		if (lastName.length() > 20) {
+		String name;
+		String spaces;
+		if (last.length() > 20) {
 			
+			for (int i = 0; i < last.length(); i++) {
+				if (i < last.length() -3) {
+					
+				}
+			}
 		}
+		if (first.length() > 20) {
+			
+			for (int i = (first.length()) -3; i < first.length(); i++) {
+				first.substring(i-1, i) = " ";
+			}
+		}	
 		
-		if (firstName.length() > 20) {
-			
+		for (int i = 1; i <20; i++)	{
+			spaces.substring(i-1, i) = " ";
 		}
+		name += last + spaces + first;
+		//name.substring(40, endIndex)
+		
 	}
 }
