@@ -36,7 +36,7 @@ public class Student implements Attendee {
 	}
 	
 	public String addSpace(String x, int length) {
-		while (x.length() < length) {
+		if (x.length() < length) {
 			x += "";
 		}
 		return x;
