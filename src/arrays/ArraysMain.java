@@ -8,15 +8,60 @@ public class ArraysMain {
 	private String[] values;
 	
 	public ArraysMain() {
-		tuesdayMethods();
+		wednesdayMethods();
 	}
 	
-	private void tuesdayMethods() {
-		int[] orderTest = {1, 2, 3, 4, 5, 1, 6, 7, 8, 9, 10, 11};
-//		cycleThrough(orderTest, 3);
-//		System.out.println(Arrays.toString(orderTest));
-		System.out.println(longestConsecutiveSequence(orderTest) + "  is longest LCS.");
+	private void wednesdayMethods() {
+		int[] diceRolls = new int[10000];
+		populate(diceRolls);
+		int[] data = longestConsecutiveSeqAndIndex(diceRolls);
+		int max = 1;
+		int longest = data[0];
+		System.out.println("The longest sequence is " + longest + " rolls."
+				+ " It happened on roll #" + data[1] + " the sequence was: " +
+				Arrays.toString(subArray(diceRolls, data[1], data[0])) + ".");
+		while(longest != 11) {
+			populate(diceRolls);
+			data = longestConsecutiveSeqAndIndex(diceRolls);
+			longest = data[0];
+			if(longest > max) {
+				max = longest;
+				System.out.println("The longest sequence is " + longest + " rolls."
+						+ " It happened on roll #" + data[1] + " the sequence was: " +
+						Arrays.toString(subArray(diceRolls, data[1], data[0])) + ".");
+			}
+		}
 		
+	}
+
+	/**
+	 * BIG IDEA
+	 * Usually a method returns ONE piece of data (i.e. 'int', 'boolean', etc)
+	 * IF we ever want more than one piece of data, one way of doing that
+	 * is by using an array, as you see here, a method that returns the LENGTH
+	 * of the sequence and its START position (both ints)
+	 * @param arr
+	 * @return
+	 */
+	private int[] longestConsecutiveSeqAndIndex(int[] arr) {
+		//use an int[] to store the data
+		int[] data = new int[2]; //element at zero is length, at 1 is position,
+		
+		data[0] = 1;
+		int currentCount = 1;
+		for(int i  = 0; i < arr.length; i++) {
+			while (i+ currentCount < arr.length && isConsecutive(arr, i , i+currentCount)) {
+				currentCount++;
+			}
+			if (currentCount > data[0]) {
+				data[0] = currentCount;
+				//also store index where this sequence started
+				data[1] = i;
+			}
+			i = i + currentCount-1;//saves time
+			currentCount = 1;
+		}
+		return data;
 	}
 	
 	/**
@@ -54,7 +99,16 @@ public class ArraysMain {
 		return totalCount;
 		*/
 	}
+
+	private void tuesdayMethods() {
+		int[] orderTest = {1, 2, 3, 4, 5, 1, 6, 7, 8, 9, 10, 11};
+//		cycleThrough(orderTest, 3);
+//		System.out.println(Arrays.toString(orderTest));
+		System.out.println(longestConsecutiveSequence(orderTest) + "  is longest LCS.");
+		
+	}
 	
+
 	private boolean ifConsecutive(int x,int y) {
 		if (x + 1 == y) {
 			return true;
