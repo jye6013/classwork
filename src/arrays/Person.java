@@ -19,4 +19,9 @@ public class Person {
 		this.lastName = last;
 		this.home = home;
 	}
+	
+	public String toString() {
+		return "My name is " + firstName + " " + 
+				lastName + " and I am from " + home + ".";
+	}
 }
