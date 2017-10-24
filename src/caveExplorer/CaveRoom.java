@@ -66,6 +66,91 @@ public class CaveRoom {
 		return direction[dir];
 	}
 	
+	public void enter() {
+		contents = "X";
+	}
+	
+	public void leave() {
+		contents = defaultContents;
+	}
+	
+	/**
+	 * This is how we join rooms together.
+	 * It gives this room access to anotherRoom and vice-versa
+	 * It also puts the door between both rooms
+	 * @param direction
+	 * @param anotherRoom
+	 * @param door
+	 */
+	public void setConnection(int direction, CaveRoom anotherRoom, Door door) {
+		addRoom(direction, anotherRoom, door);
+		anotherRoom.addRoom(oppositeDirection(direction), this, door);
+	}
+	
+	private void addRoom(int dir, CaveRoom caveRoom, Door door) {
+		borderingRooms[dir] = caveRoom;
+		doors[dir] = door;
+		setDirections(); //updates the directions
+	}
+	
+	public void interpretInput(String input) {
+		while(!isValid(input)) {
+			System.out.println("You can only enter 'w', 'a', 's', or 'd'.");
+			input = CaveExplorer.in.nextLine();
+		}
+		int direction = "wdsa".indexOf(input);
+		goToRoom(direction);
+	}
+	
+	/**
+	 * return true if w, a, s, or d is the input (NO IF STATEMENTS)
+	 * @param input
+	 * @return
+	 */
+	private boolean isValid(String input) {
+		//String inputChars = "wdsa";
+		//return inputChars.indexOf(input) != -1 && input.length() == 1;
+		
+		//return input.compareTo("s") >= 0;
+		return "wasd".indexOf(input) > -1 && input.length() == 1;	
+	}
+	
+	/**
+	 * THIS IS WHERE YOU EDIT YOUR CAVES
+	 * @param direction
+	 */
+	public static void setUpCaves() {
+		
+	}
+
+	public void goToRoom(int direction) {
+		//make sure there is room to go to:
+		if(borderingRooms[direction] != null && doors[direction] != null &&
+				doors[direction].isOpen()) {
+			CaveExplorer.currentRoom.leave();
+			CaveExplorer.currentRoom = borderingRooms[direction];
+			CaveExplorer.currentRoom.enter();
+			CaveExplorer.inventory.updateMap();
+		}
+		else {
+			//print red text
+			System.err.println("You can't do that!");
+		}
+	}
+
+	/**
+	 * returns the OPPOSITE direction
+	 * oD(0) return 2
+	 * oD(1) returns 3
+	 * @param dir
+	 * @return
+	 */
+	public static int oppositeDirection(int dir) {
+		int[] oppositeDirections = {2, 3, 0, 1};
+		return oppositeDirections[dir];
+		//or (dir + 2) % 4
+	}
+	
 	public void setDefaultContents(String defaultContents) {
 		this.defaultContents = defaultContents;
 	}
@@ -79,11 +164,11 @@ public class CaveRoom {
 	}
 
 	public String getDirection() {
-		return direction;
+		return directions;
 	}
 
-	public void setDirection(String direction) {
-		this.direction = direction;
+	public void setDirection(String directions) {
+		this.directions = directions;
 	}
 
 	public String getContents() {
