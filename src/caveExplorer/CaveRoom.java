@@ -196,4 +196,8 @@ public class CaveRoom {
 		this.contents = contents;
 	}
 
+	public Door getDoor(int direction) {
+		return doors[direction];
+	}
+
 }
