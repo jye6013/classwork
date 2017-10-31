@@ -95,13 +95,42 @@ public class CaveRoom {
 	
 	public void interpretInput(String input) {
 		while(!isValid(input)) {
-			System.out.println("You can only enter 'w', 'a', 's', or 'd'.");
+			printValidMoves();
 			input = CaveExplorer.in.nextLine();
 		}
-		int direction = "wdsa".indexOf(input);
-		goToRoom(direction);
+		int direction = validMoves().indexOf(input);
+		if(direction < 4) {
+			goToRoom(direction);
+		}
+		else {
+			performAction(direction);
+		}	
 	}
 	
+	/**
+	 * override to create response to keys other than wdsa
+	 * @param direction
+	 */
+	public void performAction(int direction) {
+		CaveExplorer.print("That key does nothing.");
+	}
+
+	/**
+	 * override to change description of possible moves
+	 */
+	public void printValidMoves() {
+		System.out.println("You can only enter 'w', 'a', 's', or 'd'.");
+		
+	}
+	
+	/**
+	 * override to add more moves
+	 * @return
+	 */
+	public String validMoves() {
+		return "wdsa";
+	}
+
 	/**
 	 * return true if w, a, s, or d is the input (NO IF STATEMENTS)
 	 * @param input
@@ -112,7 +141,7 @@ public class CaveRoom {
 		//return inputChars.indexOf(input) != -1 && input.length() == 1;
 		
 		//return input.compareTo("s") >= 0;
-		return "wasd".indexOf(input) > -1 && input.length() == 1;	
+		return validMoves().indexOf(input) > -1 && input.length() == 1;	
 	}
 	
 	/**
@@ -180,11 +209,11 @@ public class CaveRoom {
 		this.description = description;
 	}
 
-	public String getDirection() {
+	public String getDirections() {
 		return directions;
 	}
 
-	public void setDirection(String directions) {
+	public void setDirections(String directions) {
 		this.directions = directions;
 	}
 
