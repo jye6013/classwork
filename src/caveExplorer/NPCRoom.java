@@ -62,7 +62,7 @@ public class NPCRoom extends CaveRoom {
 			CaveExplorer.print("That key does nothing.");
 		}
 	}
-	
+	//
 	public String getContents() {
 		if(containsNPC() && npc.isActive()) {
 			return npc.getSymbol();
