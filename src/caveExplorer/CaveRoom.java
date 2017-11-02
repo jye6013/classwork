@@ -161,14 +161,14 @@ public class CaveRoom {
 		//3. Replace some default rooms with customs rooms (SAVE FOR LATER)
 		NPC testNPC = new NPC();
 		testNPC.setPosition(0, 1);
-		NPC princess = new NPC();
-		princess.setPosition(1, 2);
-		NPC merchant = new NPC();
-		merchant.setPosition(1, 3);
-		CaveExplorer.npcs = new NPC[3];
+		//NPC princess = new NPC();
+		//princess.setPosition(1, 2);
+		//NPC merchant = new NPC();
+		//merchant.setPosition(1, 3);
+		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
-		CaveExplorer.npcs[1] = princess;
-		CaveExplorer.npcs[2] = merchant;
+		//CaveExplorer.npcs[1] = princess;
+		//CaveExplorer.npcs[2] = merchant;
 		
 		
 		//4. Set starting room
