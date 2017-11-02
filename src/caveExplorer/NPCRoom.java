@@ -81,4 +81,7 @@ public class NPCRoom extends CaveRoom {
 		}
 	}
 	
+	public void setUpNPCRooms() {
+		//NPCRoom TreasureRoom = new NPCRoom();
+	}
 }

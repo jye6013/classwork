@@ -34,6 +34,7 @@ public class NPC {
 	}
 
 	public void interact() {
+		CaveExplorer.print("Far off in the distance, you hear a damsel in distress.");
 		CaveExplorer.print("Let's interact! Type 'bye' to stop.");
 		String s = CaveExplorer.in.nextLine();
 		while(!s.equalsIgnoreCase("bye")) {

@@ -4,6 +4,7 @@ package caveExplorer;
 public class Inventory {
 
 	private String map;
+	private int money;
 	
 	public Inventory() {
 		updateMap();
