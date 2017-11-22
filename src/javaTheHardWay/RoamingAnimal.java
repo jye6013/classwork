@@ -34,7 +34,7 @@ public class RoamingAnimal extends Animal {
 			System.out.println("\n" + h);
 		}
 	}
-	
+	//
 	public boolean getSex() {
 		return sex;
 	}

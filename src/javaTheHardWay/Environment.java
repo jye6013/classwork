@@ -1,5 +1,5 @@
 package javaTheHardWay;
-
+//
 public class Environment {
 
 	private int plants;

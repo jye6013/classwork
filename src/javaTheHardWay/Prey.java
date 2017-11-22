@@ -1,4 +1,4 @@
-package javaTheHardWay;
+package javaTheHardWay;//
 
 public class Prey extends ReproductionAnimal{
 	
