@@ -54,20 +54,20 @@ public class Searching {
 		
 	}
 
-
+/*
 	public static int binarySearch(int[] searchThis, int startIndex, int endIndex, int target) {
 		int middle = (int)((startIndex + endIndex)/2);
 		if(searchThis[middle] > target) {
+			binarySearch(searchThis, startIndex,  middle, target);
 			
-		}else {
-			if(searchThis[middle] < target) {
-				
-			}else {
-				if(searchThis[middle] == target) {
-					return middle;
-				}
-			}
+		}else if(searchThis[middle] < target){
+				binarySearch(searchThis, middle,  endIndex, target);
 		}
+		if(searchThis.length == 1) {
+				return searchThis[0];
+			}
+		
+		return -1;
 	}
 	
 	private int search(int[] searchThis, int target) {
@@ -78,6 +78,21 @@ public class Searching {
 			}
 		}
 		return -1;
+	}
+	*/
+	public static int binarySearch(int[] searchThis, int startIndex, int endIndex, int target) {{
+		if(startIndex > endIndex) 
+			return -1;
+		else {
+			int mid = (startIndex+endIndex)/2;
+			if (searchThis[mid]==target) 
+				return mid;
+			else if (searchThis[mid] > target) {
+				return binarySearch(searchThis, startIndex, mid-1, target);
+			}
+				else return binarySearch(searchThis, mid+1,endIndex, target);
+			}
+		}
 	}
 	
 	/**
@@ -93,8 +108,4 @@ public class Searching {
 			e.printStackTrace();
 		}
 	}
-
-	
-	
-	
 }
