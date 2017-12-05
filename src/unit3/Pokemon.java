@@ -66,8 +66,8 @@ public class Pokemon {
 	}
 
 	private static void printScore(Pokemon squirtle, Pokemon bulbasaur) {
-		System.out.println(p1.getName() + ", HP = " + p1.getHp());
-		System.out.println(p2.getName() + ", HP = " + p2.getHp());
+		//System.out.println(p1.getName() + ", HP = " + p1.getHp());
+		//System.out.println(p2.getName() + ", HP = " + p2.getHp());
 		
 	}
 

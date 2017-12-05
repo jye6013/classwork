@@ -2,9 +2,10 @@ package algorithms;
 
 public class ReverseString {
 	private static String reverse = "";
+	private static String characters = "example";
 	
 	public static void main(String[] args) {
-		reverseString("example");
+		reverseString(characters);
 	}
 	 
 	public static String reverseString(String str) {
@@ -12,7 +13,7 @@ public class ReverseString {
 			reverse += str;
 		}else {
 			reverse += str.substring(str.length() -1, str.length()) +
-					reverseString(str.substring(0, str.length()-1));
+			reverseString(str.substring(0, str.length()-1));
 		}
 		return reverse;
 	}
